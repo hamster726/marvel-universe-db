@@ -5,11 +5,6 @@ import MarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/Spinner";
 
 class RandomChar extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     char: {},
     loading: true,
@@ -18,6 +13,11 @@ class RandomChar extends Component {
 
   componentDidMount() {
     this.updateChar();
+    // this.timerID = setInterval(this.updateChar, 3000);
+  }
+
+  componentWillUnmount() {
+    // clearInterval(this.timerID);
   }
 
   marvelService = new MarvelService();
@@ -58,7 +58,7 @@ class RandomChar extends Component {
             <p className="randomchar__title">
               Or choose another one
             </p>
-            <button className="button button__main">
+            <button className="button button__main" onClick={this.updateChar}>
               <div className="inner">try it</div>
             </button>
             <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
@@ -71,10 +71,10 @@ class RandomChar extends Component {
 
 const View = ({char}) => {
   const {thumbnail, description, name, homepage, wiki} = char;
-
+  console.log(thumbnail)
   return (
     <div className="randomchar__block">
-      <img src={thumbnail} alt="Random character" className="randomchar__img"/>
+      <img src={thumbnail} alt="Random character" className={`randomchar__img ${thumbnail.indexOf('image_not_available') === -1 ? '' : 'no-img'}`}/>
       <div className="randomchar__info">
         <p className="randomchar__name">{name}</p>
         <p className="randomchar__descr">
