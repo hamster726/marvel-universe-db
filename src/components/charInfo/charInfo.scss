@@ -26,6 +26,9 @@
             height: 150px;
             object-fit: cover;
         }
+        .no-img {
+            object-fit: initial;
+        }
     }
     &__btns {
         margin-top: 35px;

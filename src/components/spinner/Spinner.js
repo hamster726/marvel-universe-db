@@ -1,7 +1,7 @@
 const Spinner = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg"
-         style={{margin: 'auto', background: 'none', display: 'block', }} width="200px"
+         style={{margin: '0 auto', background: 'none', display: 'block', }} width="200px"
          height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
       <circle cx="50" cy="50" r="32" stroke-width="8" stroke="#3c0f0f"
               stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round">
