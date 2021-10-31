@@ -1,6 +1,6 @@
 import './charList.scss';
 import MarvelService from "../../services/MarvelService";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 
@@ -41,7 +41,10 @@ const CharList = ({onCharSelected}) => {
     return (
       <li key={id}
           onClick={() => onCharSelected(id)}
-          className="char__item">
+          className="char__item"
+          tabIndex={0}
+          onFocus={() => onCharSelected(id)}
+      >
         <img src={thumbnail} alt="abyss" className={thumbnail.includes('image_not_available') ? 'no-img' : ''}/>
         <div className="char__name">{name}</div>
       </li>
@@ -58,7 +61,9 @@ const CharList = ({onCharSelected}) => {
         {charArray}
       </ul>
       <button className="button button__main button__long"
-              onClick={() => {OnRequest(charArray.length + offset)}}
+              onClick={() => {
+                OnRequest(charArray.length + offset)
+              }}
               disabled={newCharsLoading}
               style={{visibility: `${charsEnded ? 'hidden' : 'initial'}`}}
       >
